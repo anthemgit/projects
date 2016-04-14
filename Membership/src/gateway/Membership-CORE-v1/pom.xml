@@ -8,10 +8,10 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>Membership</groupId>
-	<artifactId>Membership-CORE-v1</artifactId>
+	<groupId>test</groupId>
+	<artifactId>test</artifactId>
 	<version>1.0</version>
-	<name>Membership-CORE-v1</name>
+	<name>test</name>
 	<packaging>pom</packaging>
 
 </project>
