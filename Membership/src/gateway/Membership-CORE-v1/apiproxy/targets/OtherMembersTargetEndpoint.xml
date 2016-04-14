@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="OtherMembersTargetEndpoint">
+    <Description/>
+    <FaultRules/>
+    <Flows/>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://30.135.160.117:64366/members/</URL>
+    </HTTPTargetConnection>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+</TargetEndpoint>

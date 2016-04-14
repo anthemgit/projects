@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.BackendErrors">
+    <DisplayName>RaiseFault.BackendErrors</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json" variablePrefix="@" variableSuffix="#">
+          
+{ 
+     "errors": [
+       {
+            "code": "@err.code#",
+            "message": "@err.message#",
+            "detail": "@err.description#"
+        }
+    ]
+}
+          </Payload>
+            
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

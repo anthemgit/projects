@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.404NotFound">
+    <DisplayName>RaiseFault.404NotFound</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">
+          
+\{ 
+     "errors": [
+       \{
+            "code": "404",
+            "message": "Not Found",
+            "detail": "The resource you are attempting to access was not found"
+        }
+    ]
+}
+          </Payload>
+            <StatusCode>404</StatusCode>
+            <ReasonPhrase>Resource Not Found</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

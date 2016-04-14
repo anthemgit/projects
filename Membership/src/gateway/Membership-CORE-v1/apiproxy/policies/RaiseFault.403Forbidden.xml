@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.403Forbidden">
+    <DisplayName>RaiseFault.403Forbidden</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">
+          
+\{ 
+     "errors": [
+       \{
+            "code": "401",
+            "message": "Forbidden",
+            "detail": "You are forbidden from accessing this resource"
+        }
+    ]
+}
+          </Payload>
+            <StatusCode>403</StatusCode>
+            <ReasonPhrase>Forbidden</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

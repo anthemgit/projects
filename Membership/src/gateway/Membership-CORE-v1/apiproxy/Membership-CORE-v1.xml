@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="Membership-CORE-v1">
+    <ConfigurationVersion majorVersion="4" minorVersion="0"/>
+    <CreatedAt>1435599993941</CreatedAt>
+    <CreatedBy>akshatha.raikorgi@anthem.com</CreatedBy>
+    <Description></Description>
+    <DisplayName>Membership-CORE-v1</DisplayName>
+    <LastModifiedAt>1438025177597</LastModifiedAt>
+    <LastModifiedBy>akshatha.raikorgi@anthem.com</LastModifiedBy>
+    <Policies>
+        <Policy>AssignMessage.GetAppCredentialsRequest</Policy>
+        <Policy>AssignMessage.RemoveClientCredentialsRequest</Policy>
+        <Policy>AssignMessage.SetContactsTargetUrl</Policy>
+        <Policy>AssignMessageSetTargetUrl</Policy>
+        <Policy>ExtractVariables.ErrorDetails</Policy>
+        <Policy>ExtractVariablesClientId</Policy>
+        <Policy>JavaScriptBuildTargetUrl</Policy>
+        <Policy>KeyValueMapOperationsGetEnvVariables</Policy>
+        <Policy>MessageLogging.Splunk</Policy>
+        <Policy>MessageLoggingSplunk</Policy>
+        <Policy>RaiseFault.400BadRequest</Policy>
+        <Policy>RaiseFault.401InvalidApiKey</Policy>
+        <Policy>RaiseFault.401Unauthorized</Policy>
+        <Policy>RaiseFault.403Forbidden</Policy>
+        <Policy>RaiseFault.404NotFound</Policy>
+        <Policy>RaiseFault.500InternalServerError</Policy>
+        <Policy>RaiseFault.503ServiceUnavailable</Policy>
+        <Policy>RaiseFault.BackendErrors</Policy>
+        <Policy>VerifyAPIKeyQueryClientId</Policy>
+        <Policy>VerifyClientId</Policy>
+    </Policies>
+    <ProxyEndpoints>
+        <ProxyEndpoint>default</ProxyEndpoint>
+    </ProxyEndpoints>
+    <Resources>
+        <Resource>jsc://BuildTargetURL.js</Resource>
+    </Resources>
+    <TargetServers/>
+    <TargetEndpoints>
+        <TargetEndpoint>ClaimsEOBTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>ClaimsSummaryTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>ContactsTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>CoveredMemberTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>EligibilityTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>GetPreferencesTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>MembershipTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>OtherMembersTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>SearchTargetEndpoint</TargetEndpoint>
+        <TargetEndpoint>UpdatePreferencesTargetEndpoint</TargetEndpoint>
+    </TargetEndpoints>
+    <validate>false</validate>
+</APIProxy>

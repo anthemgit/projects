@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessageSetTargetUrl">
+    <DisplayName>AssignMessage.SetTargetUrl</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <AssignVariable>
+        <Name>forward.target.uri</Name>
+         <Value>/contacts/members</Value>
+        <Ref/>
+    </AssignVariable>
+    <AssignVariable>
+        <Name>forward.target.host</Name>
+        <Ref>micro-ser-host</Ref>
+    </AssignVariable>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+    <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

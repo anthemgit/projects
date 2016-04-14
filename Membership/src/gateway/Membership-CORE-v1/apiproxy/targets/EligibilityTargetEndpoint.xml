@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TargetEndpoint name="EligibilityTargetEndpoint">
+    <Description/>
+    <FaultRules>
+        <FaultRule name="badRequest">
+            <Step>
+                <Name>RaiseFault.400BadRequest</Name>
+            </Step>
+            <Condition>(response.status.code = 400)</Condition>
+        </FaultRule>
+        <FaultRule name="unauthorized">
+            <Step>
+                <Name>RaiseFault.401Unauthorized</Name>
+            </Step>
+            <Condition>(response.status.code = 401)</Condition>
+        </FaultRule>
+        <FaultRule name="forbidden">
+            <Step>
+                <Name>RaiseFault.403Forbidden</Name>
+            </Step>
+            <Condition>(response.status.code = 403)</Condition>
+        </FaultRule>
+        <FaultRule name="notFound">
+            <Step>
+                <Name>RaiseFault.404NotFound</Name>
+            </Step>
+            <Condition>(response.status.code = 404)</Condition>
+        </FaultRule>
+        <FaultRule name="internalServerError">
+            <Step>
+                <Name>RaiseFault.500InternalServerError</Name>
+            </Step>
+            <Condition>(response.status.code = 500)</Condition>
+        </FaultRule>
+        <FaultRule name="serviceUnavailable">
+            <Step>
+                <Name>RaiseFault.503ServiceUnavailable</Name>
+            </Step>
+            <Condition>(response.status.code = 503) || (fault.name = "ServiceUnavailable")</Condition>
+        </FaultRule>
+    </FaultRules>
+    <Flows/>
+    <HTTPTargetConnection>
+        <Properties/>
+        <URL>http://30.135.160.117:64366/members/</URL>
+    </HTTPTargetConnection>
+    <PreFlow name="PreFlow">
+        <Request/>
+        <Response/>
+    </PreFlow>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+</TargetEndpoint>

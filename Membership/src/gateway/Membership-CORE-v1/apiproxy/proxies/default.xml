@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description/>
+    <FaultRules>
+        <FaultRule name="invalid_key_rule">
+            <Step>
+                <Name>RaiseFault.BackendError</Name>
+            </Step>
+            <Condition>(message.status.code = response.status.code)</Condition>
+        </FaultRule>
+    </FaultRules>
+    <FaultRules>
+        <FaultRule name="all">
+            <Step>
+                <Name>RaiseFault.401Unauthorized</Name>
+            </Step>
+            <Condition>(message.status.code != response.status.code)</Condition>
+        </FaultRule>
+    </FaultRules>
+    <PreFlow name="PreFlow">
+        <Request>
+            <Step>
+                <FaultRules/>
+                <Name>AssignMessage.GetAppCredentialsRequest</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>ExtractVariablesClientId</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>VerifyClientId</Name>
+                <Condition>!(request.header.X-ANTHEM-CLIENT-ID is null)</Condition>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>VerifyAPIKeyQueryClientId</Name>
+                <Condition>(request.header.X-ANTHEM-CLIENT-ID is null)</Condition>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>AssignMessage.RemoveClientCredentialsRequest</Name>
+            </Step>
+            <Step>
+                <FaultRules/>
+                <Name>KeyValueMapOperationsGetEnvVariables</Name>
+            </Step>
+        </Request>
+        <Response/>
+    </PreFlow>
+    <Flows>
+        <Flow name="search">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/search&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="eligibility">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/eligibility&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="contacts">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/contacts&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="claimssummary">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/claims&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="covered-members">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/covered-members&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="preferences ">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/preferences&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="preferences">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/preferences&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+        </Flow>
+        <Flow name="claims-eob">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/claims/{clmId}/eobs/{eobuid}&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+        <Flow name="other-members">
+            <Description/>
+            <Request/>
+            <Response/>
+            <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/other-members&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+        </Flow>
+    </Flows>
+    <PostFlow name="PostFlow">
+        <Request/>
+        <Response/>
+    </PostFlow>
+    <HTTPProxyConnection>
+        <BasePath>/v1/members</BasePath>
+        <VirtualHost>secure</VirtualHost>
+    </HTTPProxyConnection>
+    <RouteRule name="virtual-route">
+        <TargetEndpoint>MembershipTargetEndpoint</TargetEndpoint>
+        <Condition>(request.queryparam.env = &quot;virtual&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="search-route">
+        <TargetEndpoint>SearchTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/search&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="eligibility-route">
+        <TargetEndpoint>EligibilityTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/eligibility&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="contacts-route">
+        <TargetEndpoint>ContactsTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/contacts&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="claims-route">
+        <TargetEndpoint>ClaimsSummaryTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/claims&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="covered-members-route">
+        <TargetEndpoint>CoveredMemberTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/covered-members&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="claims-eob-route">
+        <TargetEndpoint>ClaimsEOBTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/claims/{clmId}/eobs/{eobuid}&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="other-members-route">
+        <TargetEndpoint>OtherMembersTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/other-members&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="get-pref-route">
+        <TargetEndpoint>GetPreferencesTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/preferences&quot;) and (request.verb = &quot;GET&quot;)</Condition>
+    </RouteRule>
+    <RouteRule name="upd-pref-route">
+        <TargetEndpoint>UpdatePreferencesTargetEndpoint</TargetEndpoint>
+        <Condition>(proxy.pathsuffix MatchesPath &quot;/{mbruid}/preferences&quot;) and (request.verb = &quot;POST&quot;)</Condition>
+    </RouteRule>
+</ProxyEndpoint>

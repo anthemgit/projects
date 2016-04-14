@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations async="false" continueOnError="false" enabled="true" name="KeyValueMapOperationsGetEnvVariables" mapIdentifier="endpoints">
+    <DisplayName>KeyValueMapOperations.GetEnvVariables</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <ExclusiveCache>false</ExclusiveCache>
+    <ExpiryTimeInSecs>-1</ExpiryTimeInSecs>
+    <Get assignTo="micro-ser-host" index="1">
+        <Key>
+            <Parameter>micro-service</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="virtual1-host" index="1">
+        <Key>
+            <Parameter>virtual-1</Parameter>
+        </Key>
+    </Get>
+    <Get assignTo="virtual2-host" index="1">
+        <Key>
+            <Parameter>virtual-2</Parameter>
+        </Key>
+    </Get>
+    <Scope>environment</Scope>
+</KeyValueMapOperations>

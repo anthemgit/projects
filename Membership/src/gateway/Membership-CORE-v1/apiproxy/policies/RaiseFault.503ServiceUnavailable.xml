@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RaiseFault async="false" continueOnError="false" enabled="true" name="RaiseFault.503ServiceUnavailable">
+    <DisplayName>RaiseFault.503ServiceUnavailable</DisplayName>
+    <FaultRules/>
+    <Properties/>
+    <FaultResponse>
+        <Set>
+            <Headers/>
+            <Payload contentType="application/json">
+          
+\{ 
+     "errors": [
+       \{
+            "code": "503",
+            "message": "Service Unavailable",
+              "detail": "The resource/service you are trying to access is currently unavailable.  Try again later."
+        }
+    ]
+}
+          </Payload>
+            <StatusCode>503</StatusCode>
+            <ReasonPhrase>Service Unavailable</ReasonPhrase>
+        </Set>
+    </FaultResponse>
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</RaiseFault>

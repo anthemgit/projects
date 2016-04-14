@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MessageLogging  async="false" continueOnError="false" enabled="true" name="MessageLoggingSplunk">
+    <DisplayName>MessageLogging.Splunk</DisplayName>
+    <Syslog>
+        <Message>Log: {messageid} – {request.uri} – {proxy.pathsuffix}</Message>
+        <Host>splunk-nonprod-indexers.wellpoint.com</Host>
+        <Port>9993</Port>
+      <Protocol>TCP</Protocol>
+    </Syslog>
+</MessageLogging>
